@@ -4,6 +4,14 @@ A basic client side router that comes in a small package [1.1kb].
 
 No Shadow Dom, No Virtual Dom... Just a simple callback function that gives you access to URL and GET parameters.
 
+# Adding
+
+You can simply add router.js using a standard script tag.
+
+```
+<script src="js/router-v1.min.js"></script>
+```
+
 # Basic Usage
 
 The routing uses `location.hash`. You can use any hash, but for this example we will use [mithril's](https://mithril.js.org/) format.
