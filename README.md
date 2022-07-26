@@ -12,15 +12,14 @@ When calling the **router** function you can specify which route in the index pa
 Next you can use the **route** method to add new routes and their callback to the router.
 
 ```
-    let page = document.body;
-    let app = router('#!/home');
-        app.route('#!/home',()=>{
-            page.innerText = 'route: about';
-        });
-        app.route('#!/about',()=>{
-            page.innerText = 'route: about';
-        });
-
+let page = document.body;
+let app = router('#!/home');
+    app.route('#!/home',()=>{
+        page.innerText = 'route: about';
+    });
+    app.route('#!/about',()=>{
+        page.innerText = 'route: about';
+    });
 ```
 
 # Multiple Routes
@@ -28,15 +27,31 @@ Next you can use the **route** method to add new routes and their callback to th
 To make things easier, you can specify multiple routes at one time using the **routing** method. 
 
 ```
-    let page = document.body;
-    let app = router('#!/home');
-        app.routing({
-            '#!/home': ()=>{
-                page.innerText = 'route: home';
-            },
-            '#!/about': ()=>{
-                page.innerText = 'route: user/'+params.user;
-            }
-        });
+let page = document.body;
+let app = router('#!/home');
+    app.routing({
+        '#!/home': ()=>{
+            page.innerText = 'route: home';
+        },
+        '#!/about': ()=>{
+            page.innerText = 'route: user/'+params.user;
+        }
+    });
 ```
 
+# URL Parameters
+
+The URL parameters are automatically sent to the callback function as the first variable. In this example we call it **url**, but you can change the variable name.
+
+```
+let page = document.body;
+let app = router('#!/home');
+    app.routing({
+        '#!/home': ()=>{
+            page.innerText = 'route: home';
+        },
+        '#!/books/:book': (url)=>{
+            page.innerText = `route: books / ${url.book}`;
+        },
+    });
+```
