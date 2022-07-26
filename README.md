@@ -41,7 +41,7 @@ let app = router('#!/home');
 
 # URL Parameters
 
-The URL parameters are automatically sent to the callback function as the first variable. In this example we call it **url**, but you can change the variable name.
+The URL parameters are automatically sent to the callback function as the first variable. In this example we call it **url**.
 
 ```
 let page = document.body;
@@ -51,7 +51,30 @@ let app = router('#!/home');
             page.innerText = 'route: home';
         },
         '#!/books/:book': (url)=>{
+            // www.website.com/#!/books/harry_potter
+            // url.book -> harry_potter
             page.innerText = `route: books / ${url.book}`;
         },
     });
 ```
+
+# Get Paramters
+
+The GET parameters are automatically sent to the callback function as the second variable. In this example we call it **get**.
+
+```
+let page = document.body;
+let app = router('#!/home');
+    app.routing({
+        '#!/home': ()=>{
+            page.innerText = 'route: home';
+        },
+        '#!/books/:book': (url, get)=>{
+            // www.website.com/#!/books/harry_potter?test=hello_world
+            // url.book -> harry_potter
+            // get.test -> hello_world
+            page.innerText = `route: books / ${url.book} ? ${get.test}`;
+        },
+    });
+```
+
